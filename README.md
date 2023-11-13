@@ -107,8 +107,8 @@ The Recipe app keeps track of all your recipes, ingredients, and inventory. It w
 
 👤 **Joyce Cruz**
 
-- GitHub: [2004-Okari](https://github.com/2004-okari)
-- LinkedIn: [Okari-Nyandika](https://www.linkedin.com/in/rooney-okari-86a5ba250/)
+- GitHub: [balatstar](https://github.com/balatstar)
+- LinkedIn: [Joyce Cruz](https://www.linkedin.com/in/joyce-ann-cruz-668a41a7/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
