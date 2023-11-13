@@ -36,3 +36,4 @@
 
 # .gitignore
 node_modules/
+test/
