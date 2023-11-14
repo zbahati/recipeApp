@@ -1,3 +1,4 @@
+<div id="foods-new">
 <%= form_with(model: food) do |form| %>
   <% if food.errors.any? %>
     <div style="color: red">
@@ -17,7 +18,7 @@
   </div>
 
   <div>
-    <%= form.label :measurementUnit, style: "display: block" %>
+    <%= form.label :measurementUnit, "Measurement Unit", style: "display: block" %>
     <%= form.text_field :measurementUnit %>
   </div>
 
@@ -40,3 +41,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

@@ -1,14 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Foods</h1>
+<h1>Food List</h1>
 
-<div id="foods">
+<div id="foods-index">
+<div class="foods-index-button"><%= link_to "Add food", new_food_path, class: 'btn btn-primary' %></div>
+<table class="foods-index-table">
+<thead>
+  <tr class="foods-index-table-head">
+    <th>Name</th>
+    <th>Measurement Unit</th>
+    <th>Unit Price</th>
+    <th>Quantity</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
   <% @foods.each do |food| %>
-    <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
+    <tr>
+      <td><%= food.name %></td>
+      <td><%= food.measurementUnit %></td>
+      <td><%= number_to_currency(food.price) %></td>
+      <td><%= food.quantity %></td>
+      <td>
+        <%= link_to "Delete", food, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
   <% end %>
+</tbody>
+</table>
 </div>
-
-<%= link_to "New food", new_food_path %>

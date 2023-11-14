@@ -15,7 +15,7 @@
      <nav>
      <h1>RecipeApp</h1>
       <ul>
-        <li><%= link_to "Food" %></li>
+        <li><%= link_to "Food", foods_path %></li>
         <li><%= link_to "Recipe" %></li>
         <li><%= link_to "Public Recipe" %></li>
         <li><%= link_to "Registration" %></li>
@@ -25,6 +25,8 @@
      </nav>
 
     </header>
+  <main class="container container-main">
     <%= yield %>
+  </main>
   </body>
 </html>
