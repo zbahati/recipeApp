@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_scope :user do
+    delete '/logout', to: 'devise/sessions#destroy', as: :logout
+  end
+  
+  devise_for :users
   resources :recipe_foods
   resources :recipes
   resources :foods
@@ -10,5 +15,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root 'foods#index'
 end

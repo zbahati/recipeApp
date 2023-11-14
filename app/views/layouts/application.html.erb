@@ -18,14 +18,21 @@
         <li><%= link_to "Food", foods_path %></li>
         <li><%= link_to "Recipe" %></li>
         <li><%= link_to "Public Recipe" %></li>
-        <li><%= link_to "Registration" %></li>
-        <li><%= link_to "Login" %></li>
-        <li><%= link_to "Logout" %></li>
+        <% if user_signed_in? %>
+        <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+        <li class="devise-logout"><%= form_tag(logout_path, method: :delete) do %>
+          <%= submit_tag "Logout" %>
+        <% end %></li>
+        <% else %>
+        <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
       </ul>
      </nav>
 
     </header>
   <main class="container container-main">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
     <%= yield %>
   </main>
   </body>

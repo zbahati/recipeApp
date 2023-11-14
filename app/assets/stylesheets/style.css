@@ -41,3 +41,12 @@ h6 {
 .foods-index-table th {
   padding: 10px 20px;
 }
+
+.devise-logout input {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(13, 110, 253);
+  text-decoration: underline;
+}
