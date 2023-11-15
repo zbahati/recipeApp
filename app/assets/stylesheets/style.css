@@ -41,3 +41,32 @@ h6 {
 .foods-index-table th {
   padding: 10px 20px;
 }
+
+.devise-logout input {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(13, 110, 253);
+  text-decoration: underline;
+}
+
+.form-container {
+  margin: 0 auto;
+  width: 400px;
+  max-width: 100%;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 5px;
+}
+
+.form-container input[type=submit] {
+  margin: 20px 0;
+}
+
+.form-container input[type=checkbox] {
+  width: auto;
+  margin: 20px 0;
+}
