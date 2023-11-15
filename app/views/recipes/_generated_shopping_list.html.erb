@@ -1,0 +1,26 @@
+
+<div id="foods-index">
+  <table class="foods-index-table">
+    <thead>
+      <tr class="foods-index-table-head">
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe_food.each do |recipe_food| %>
+        <tr>
+          <td><%= recipe_food.food.name %></td>
+          <td><%= "#{ recipe_food.quantity } #{recipe_food.food.measurementUnit}"  %></td>
+          <td><%= number_to_currency(recipe_food.food.price * recipe_food.quantity) %></td>
+          <td>
+            <%= link_to "Modify", edit_recipe_food_path %>
+            <%= link_to "Remove", recipe_food, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
