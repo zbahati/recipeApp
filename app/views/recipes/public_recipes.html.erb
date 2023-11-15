@@ -1,0 +1,13 @@
+<h1 class="public_recipe_h1">Public recipe</h1>
+<% @recipe_data.each do |recipe_data| %>
+  <div class="public-recipe-container">
+    <div class="right-section">
+     <h1><%= recipe_data.name %></h1>
+      <p>By: <%= recipe_data.user_name %></p>
+    </div>
+    <div class="left-section">
+      <p>Total Food items: <%= recipe_data.food_count %></p>
+      <p>Total price: <%= number_to_currency(recipe_data.total_price) %></p>
+    </div>
+  </div>
+<% end %>

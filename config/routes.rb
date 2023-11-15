@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     delete '/logout', to: 'devise/sessions#destroy', as: :logout
   end
-  
+
+  get "public_recipes", to: "recipes#public_recipes", as: :public_recipes
   devise_for :users
   resources :recipe_foods
   resources :recipes

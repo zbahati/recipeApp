@@ -8,8 +8,6 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    # @recipe = Recipe.find(params[:id])
-    # @recipe_food = RecipeFood.includes(:food).where(recipe_id: params[:id])
     @recipe = Recipe.find(params[:id])
     @recipe_food = @recipe.recipe_foods.includes(:food)
   end
@@ -58,6 +56,14 @@ class RecipesController < ApplicationController
       format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def public_recipes
+    @recipe_data = Recipe.joins(user: %i[foods recipe_foods])
+      .select('users.name as user_name, recipes.*, COUNT(recipe_foods.id) as food_count,
+       SUM(recipe_foods.quantity * foods.price) as total_price')
+      .where(public: true)
+      .group('users.name, recipes.id')
   end
 
   private
