@@ -60,13 +60,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # app/controllers/recipes_controller.rb
-  # def generate_shopping_list
-  #   @recipe = Recipe.find(params[:id])
-  #   @recipe_food = @recipe.recipe_foods.includes(:food)
-  # end
-
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
