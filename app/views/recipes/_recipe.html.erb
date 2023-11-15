@@ -1,32 +1,53 @@
+
 <div id="<%= dom_id recipe %>">
-  <p>
-    <strong>Name:</strong>
-    <%= recipe.name %>
-  </p>
-
-  <p>
-    <strong>Preparation time:</strong>
-    <%= recipe.preparation_time %>
-  </p>
-
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
-
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= recipe.user_id %>
-  </p>
-
+  <div class="recipe_container">
+      <div class="<%= params[:id].present?? 'recipe no_border' : 'recipe' %>">
+        <div>
+          <%= link_to recipe do %>
+            <h1><%= recipe.name %>  </h1>
+          <% end %>
+          <div class="<%= params[:id].present? ? 'hide_btn' : '' %>">
+            <%= button_to "Remove", recipe, method: :delete, class: 'delete_btn' %>
+          </div>
+        </div>
+         <% if params[:id].present? %>
+          <div class="recipe_details">
+            <div>
+              <p>
+                <strong>Preparation time:</strong>
+                  <%= recipe.preparation_time %>
+              </p>
+              <p>
+                <strong>Cooking time:</strong>
+                <%= recipe.cooking_time %>
+              </p>
+            </div>
+            <div class="toggle_container">
+              <p><%= recipe.public?? 'Public' : 'Private' %></p>
+              <div class="toggle_btn">
+                <%= form_with(model: recipe) do |form| %>
+                  <%= form.label :public do %>
+                    <%= form.check_box :public, { checked: recipe.public, onchange: 'this.form.submit()' } %>
+                    <span class="slider"></span>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <div class="recipe_description">
+         <%= link_to recipe do %>
+          <p><%= recipe.description %></p>
+          <% end %>
+        </div>
+      </div>
+      <% if params[:id].present? %>
+        <div class="generate_add">
+         <%= button_to "Generate shopping list" %>
+          <%= link_to "Add Ingredient", new_recipe_path %>
+        </div>
+        <div class="generated_shopping_list">
+         <%= render partial: "generated_shopping_list" %>
+        </div>
+    <% end %>
+  </div>
 </div>
