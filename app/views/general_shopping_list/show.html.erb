@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @general_shopping_list %>
+
+<div>
+  <%= link_to "Edit this general shopping list", edit_general_shopping_list_path(@general_shopping_list) %> |
+  <%= link_to "Back to general shopping lists", general_shopping_lists_path %>
+
+  <%= button_to "Destroy this general shopping list", @general_shopping_list, method: :delete %>
+</div>
