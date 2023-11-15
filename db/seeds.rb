@@ -6,8 +6,8 @@ Recipe.destroy_all
 User.destroy_all
 
 # Create users
-user1 = User.create(name: 'John Doe')
-user2 = User.create(name: 'Jane Smith')
+user1 = User.create(name: 'John Doe', email: 'user1@example.com', password: 'Password')
+user2 = User.create(name: 'Jane Smith', email: 'user2@example.com', password: 'Password')
 
 # Create foods
 food1 = Food.create(name: 'Ingredient 1', measurementUnit: 'kg', price: 5.99, quantity: 2, user: user1)
