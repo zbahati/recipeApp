@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :general_shopping_lists
   devise_scope :user do
     delete '/logout', to: 'devise/sessions#destroy', as: :logout
   end
