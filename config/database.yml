@@ -84,7 +84,12 @@ test:
 production:
   <<: *default
   database: recipe_app_production
+<<<<<<< HEAD
   username: postgres
   password: Bahati@123
+=======
+  # username: postgres
+  # password: Bahati@123
+>>>>>>> 68c8cbdcb8ed997c8c115451c84629e78ebd839e
   # username: recipe_app
   # password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
