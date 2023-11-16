@@ -15,10 +15,10 @@
      <nav>
      <h1>RecipeApp</h1>
       <ul>
-        <li><%= link_to "Food", foods_path %></li>
-        <li><%= link_to "Recipe" %></li>
         <li><%= link_to "Public Recipe", public_recipes_path %></li>
         <% if user_signed_in? %>
+        <li><%= link_to "Food", foods_path %></li>
+        <li><%= link_to "Recipe", recipes_path %></li>
         <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
         <li class="devise-logout"><%= form_tag(logout_path, method: :delete) do %>
           <%= submit_tag "Logout" %>

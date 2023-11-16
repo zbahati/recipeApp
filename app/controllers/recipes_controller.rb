@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :set_recipe, only: %i[edit update destroy]
 
   # GET /recipes or /recipes.json
   def index
@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @recipe = Recipe.new
+    @recipe = @user.recipes.new
   end
 
   # GET /recipes/1/edit
@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = @user.recipes.new(recipe_params)
 
     respond_to do |format|
       if @recipe.save
@@ -70,7 +70,7 @@ class RecipesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
-    @recipe = Recipe.find(params[:id])
+    @user = current_user
   end
 
   # Only allow a list of trusted parameters through.
