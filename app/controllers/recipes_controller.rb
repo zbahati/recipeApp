@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
 
-
   # GET /recipes or /recipes.json
   def index
     @recipes = current_user.recipes
@@ -62,7 +61,8 @@ class RecipesController < ApplicationController
   def public_recipes
     @recipe_data = Recipe
       .joins(:user, recipe_foods: :food)
-      .select('users.name as user_name, recipes.*, COUNT(recipe_foods.id) as food_count, SUM(recipe_foods.quantity * foods.price) as total_price')
+      .select('users.name as user_name, recipes.*, COUNT(recipe_foods.id) as food_count,
+       SUM(recipe_foods.quantity * foods.price) as total_price')
       .where(public: true)
       .group('users.name, recipes.id')
   end
