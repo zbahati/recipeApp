@@ -1,9 +1,10 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[edit update destroy]
+  before_action :set_recipe, only: %i[show edit update destroy]
+
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.recipes
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -14,7 +15,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @recipe = @user.recipes.new
+    @recipe = Recipe.new
   end
 
   # GET /recipes/1/edit
@@ -22,7 +23,7 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    @recipe = @user.recipes.new(recipe_params)
+    @recipe = current_user.recipes.new(recipe_params)
 
     respond_to do |format|
       if @recipe.save
@@ -59,9 +60,9 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipe_data = Recipe.joins(user: %i[foods recipe_foods])
-      .select('users.name as user_name, recipes.*, COUNT(recipe_foods.id) as food_count,
-       SUM(recipe_foods.quantity * foods.price) as total_price')
+    @recipe_data = Recipe
+      .joins(:user, recipe_foods: :food)
+      .select('users.name as user_name, recipes.*, COUNT(recipe_foods.id) as food_count, SUM(recipe_foods.quantity * foods.price) as total_price')
       .where(public: true)
       .group('users.name, recipes.id')
   end
@@ -70,7 +71,7 @@ class RecipesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
-    @user = current_user
+    @recipe = Recipe.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

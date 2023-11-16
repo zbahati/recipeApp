@@ -15,15 +15,7 @@
      <nav>
      <h1>RecipeApp</h1>
       <ul>
-<<<<<<< HEAD
         <li><%= link_to "Public Recipe", public_recipes_path %></li>
-=======
-        <% if user_signed_in? %>  
-        <li><%= link_to "Food", foods_path %></li>
-        <li><%= link_to "Recipe", recipes_path %></li>
-        <% end %>
-        <li><%= link_to "Public Recipe" %></li>
->>>>>>> 68c8cbdcb8ed997c8c115451c84629e78ebd839e
         <% if user_signed_in? %>
         <li><%= link_to "Food", foods_path %></li>
         <li><%= link_to "Recipe", recipes_path %></li>
@@ -38,10 +30,10 @@
      </nav>
 
     </header>
-  <main class="container container-main">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <main class="container container-main">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
   </main>
   </body>
 </html>
