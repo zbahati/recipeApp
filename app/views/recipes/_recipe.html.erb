@@ -22,17 +22,19 @@
                 <%= recipe.cooking_time %>
               </p>
             </div>
-            <div class="toggle_container">
-              <p><%= recipe.public?? 'Public' : 'Private' %></p>
-              <div class="toggle_btn">
-                <%= form_with(model: recipe) do |form| %>
-                  <%= form.label :public do %>
-                    <%= form.check_box :public, { checked: recipe.public, onchange: 'this.form.submit()' } %>
-                    <span class="slider"></span>
+            <% if user_signed_in? %>
+              <div class="toggle_container">
+                <p><%= recipe.public?? 'Public' : 'Private' %></p>
+                <div class="toggle_btn">
+                  <%= form_with(model: recipe) do |form| %>
+                    <%= form.label :public do %>
+                      <%= form.check_box :public, { checked: recipe.public, onchange: 'this.form.submit()' } %>
+                      <span class="slider"></span>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <div class="recipe_description">
          <%= link_to recipe do %>
@@ -40,14 +42,16 @@
           <% end %>
         </div>
       </div>
-      <% if params[:id].present? %>
-        <div class="generate_add">
-         <%= button_to "Generate shopping list" %>
-          <%= link_to "Add Ingredient", new_recipe_path %>
-        </div>
-        <div class="generated_shopping_list">
-         <%= render partial: "generated_shopping_list" %>
-        </div>
-    <% end %>
-  </div>
+        <% if params[:id].present? %>
+          <% if user_signed_in? %>
+            <div class="generate_add">
+              <%= link_to "Generate shopping list", general_shopping_list_index_path %>
+              <%= link_to "Add Ingredient", new_recipe_food_path(recipe_id: params[:id]) %>
+            </div>
+          <% end %>
+          <div class="generated_shopping_list">
+            <%= render partial: "generated_shopping_list" %>
+          </div>
+      <% end %>
+    </div>
 </div>
