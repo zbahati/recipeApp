@@ -1,5 +1,9 @@
 <h1>Food List</h1>
 
+<% if user_signed_in? %>
+  <p>Welcome, <%= current_user.name %>! Here is your list of available food.</p>
+<% end %>
+
 <div id="foods-index">
 <div class="foods-index-button"><%= link_to "Add food", new_food_path, class: 'btn btn-primary' %></div>
 <table class="foods-index-table">
@@ -20,6 +24,7 @@
       <td><%= number_to_currency(food.price) %></td>
       <td><%= food.quantity %></td>
       <td>
+        <%= link_to "Edit", edit_food_path(food) %> |
         <%= link_to "Delete", food, method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
