@@ -27,6 +27,8 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   AllowedMethods: ['describe']
   Max: 30
+  Exclude:
+  - "spec/features/foods_spec.rb"
 
 Style/Documentation:
   Enabled: false

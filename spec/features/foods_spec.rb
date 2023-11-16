@@ -13,7 +13,7 @@ RSpec.feature 'Foods', type: :feature do
   end
 
   scenario 'user creates a new food' do
-    user = create_user_and_login
+    create_user_and_login
 
     visit new_food_path
 
@@ -44,7 +44,7 @@ RSpec.feature 'Foods', type: :feature do
       measurementUnit: 'unit',
       price: 10.99,
       quantity: 1,
-      user: user
+      user:
     )
   end
 end
