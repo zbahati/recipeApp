@@ -6,7 +6,9 @@
         <th>Name</th>
         <th>Quantity</th>
         <th>Value</th>
+        <% if user_signed_in? %>
         <th>Action</th>
+        <% end%>
       </tr>
     </thead>
     <tbody>
@@ -15,10 +17,12 @@
           <td><%= recipe_food.food.name %></td>
           <td><%= "#{ recipe_food.quantity } #{recipe_food.food.measurementUnit}"  %></td>
           <td><%= number_to_currency(recipe_food.food.price * recipe_food.quantity) %></td>
+          <% if user_signed_in? %>
           <td>
-            <%= link_to "Modify", edit_recipe_food_path %>
+            <%= link_to "Modify", edit_recipe_food_path(recipe_id: params[:id]) %>
             <%= link_to "Remove", recipe_food, method: :delete, data: { confirm: 'Are you sure?' } %>
           </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
