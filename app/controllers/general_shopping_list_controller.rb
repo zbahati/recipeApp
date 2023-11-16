@@ -4,7 +4,7 @@ class GeneralShoppingListController < ApplicationController
   # GET /general_shopping_lists or /general_shopping_lists.json
   def index
     @user = current_user
-    @recipes = @user.recipes.includes(:recipe_foods, :foods)
+    @recipes = @user.recipes.includes(:recipe_foods)
   end
 
   # GET /general_shopping_lists/1 or /general_shopping_lists/1.json

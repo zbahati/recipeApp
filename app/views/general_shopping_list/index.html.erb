@@ -1,22 +1,51 @@
-<h1>General Shopping List</h1>
+<h1>Shopping List</h1>
 
 <div id="general_shopping_lists">
-<ul>
-  <% @recipes.each do |recipe| %>
-    <h2><%= recipe.name %></h2>
-    <ul>
-      <% recipe.recipe_foods.each do |recipe_food| %>
-        <% food = recipe_food.food %>
-        <% quantity_needed = recipe_food.quantity %>
-        <% quantity_available = food.quantity || 0 %>
+  <div id="foods-index">
+    <% user_foods = current_user.foods %>
+    <% all_recipe_foods_grouped = @recipes.flat_map(&:recipe_foods).group_by { |rf| rf.food } %>
 
-        <% if quantity_available < quantity_needed %>
-          <li><%= food.name %> - Needed: <%= quantity_needed %>, Available: <%= quantity_available %></li>
-        <% end %>
+    <% total_count = 0 %>
+    <% total_price = 0 %>
+
+    <% user_foods.each do |food| %>
+      <% recipe_foods = all_recipe_foods_grouped[food] || [] %>
+      <% total_quantity = recipe_foods.sum(&:quantity) %>
+      <% missing_quantity = [total_quantity - (food.quantity || 0), 0].max %>
+
+      <% if missing_quantity > 0 %>
+        <% total_count += 1 %>
+        <% total_price += missing_quantity * food.price %>
       <% end %>
-    </ul>
-  <% end %>
-</ul>
+    <% end %>
 
-<%= link_to "New general shopping list", new_general_shopping_list_path %>
+    <p>Total Count: <%= total_count %> | Total Price: <%= number_to_currency(total_price) %></p>
+
+    <table class="foods-index-table">
+      <thead>
+        <tr class="foods-index-table-head">
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Price per unit</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% user_foods.each do |food| %>
+          <% recipe_foods = all_recipe_foods_grouped[food] || [] %>
+          <% total_quantity = recipe_foods.sum(&:quantity) %>
+          <% missing_quantity = [total_quantity - (food.quantity || 0), 0].max %>
+
+          <% if missing_quantity > 0 %>
+            <tr>
+              <td><%= food.name %></td>
+              <td><%= missing_quantity %> <%= food.measurementUnit %></td>
+              <td><%= number_to_currency(food.price) %></td>
+              <td><%= number_to_currency(missing_quantity * food.price) %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
