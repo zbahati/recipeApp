@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Recipe, type: :model do
   it 'is valid with a name, preparation time, cooking time, description' do
     user = User.create(name: 'Roy Batty')
-    recipe = Recipe.new(name: 'Ice Cream Sundae', preparation_time: 1, cooking_time: 1, description: 'This is a sample recipe.', user:)
+    recipe = Recipe.new(name: 'Ice Cream Sundae', preparation_time: 1, cooking_time: 1,
+                        description: 'This is a sample recipe.', user:)
     expect(recipe).to be_valid
   end
 
@@ -21,7 +22,8 @@ RSpec.describe Recipe, type: :model do
 
   it 'is not valid with preparation time < 0' do
     user = User.create(name: 'Roy Batty')
-    recipe = Recipe.new(name: 'Ice Cream Sundae', preparation_time: -1, cooking_time: 1, description: 'This is a sample recipe.', user:)
+    recipe = Recipe.new(name: 'Ice Cream Sundae', preparation_time: -1, cooking_time: 1,
+                        description: 'This is a sample recipe.', user:)
     expect(recipe).not_to be_valid
   end
 
@@ -33,7 +35,8 @@ RSpec.describe Recipe, type: :model do
 
   it 'is not valid with cooking time < 0' do
     user = User.create(name: 'Roy Batty')
-    recipe = Recipe.new(name: 'Ice Cream Sundae', preparation_time: 1, cooking_time: -1, description: 'This is a sample recipe.', user:)
+    recipe = Recipe.new(name: 'Ice Cream Sundae', preparation_time: 1, cooking_time: -1,
+                        description: 'This is a sample recipe.', user:)
     expect(recipe).not_to be_valid
   end
 
