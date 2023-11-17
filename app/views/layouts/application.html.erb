@@ -15,6 +15,7 @@
      <nav>
      <h1>RecipeApp</h1>
       <ul>
+        <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Public Recipe", public_recipes_path %></li>
         <% if user_signed_in? %>
         <li><%= link_to "Food", foods_path %></li>
