@@ -22,7 +22,7 @@
                 <%= recipe.cooking_time %>
               </p>
             </div>
-            <% if user_signed_in? %>
+            <% if user_signed_in? && current_user == recipe.user %>
               <div class="toggle_container">
                 <p><%= recipe.public?? 'Public' : 'Private' %></p>
                 <div class="toggle_btn">
@@ -43,7 +43,7 @@
         </div>
       </div>
         <% if params[:id].present? %>
-          <% if user_signed_in? %>
+          <% if user_signed_in? && current_user == recipe.user %>
             <div class="generate_add">
               <%= link_to "Generate shopping list", general_shopping_list_index_path %>
               <%= link_to "Add Ingredient", new_recipe_food_path(recipe_id: params[:id]) %>
