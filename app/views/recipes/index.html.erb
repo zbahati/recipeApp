@@ -1,0 +1,7 @@
+
+<div id="recipes">
+  <div class="foods-index-button"><%= link_to "Add recipe", new_recipe_path, class: 'btn btn-primary' %></div>
+  <% @recipes.each do |recipe| %>
+    <%= render recipe %>
+  <% end %>
+</div>
