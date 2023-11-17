@@ -81,10 +81,10 @@ nav h1 {
 
 .recipe {
   width: 90%;
-  padding: 1rem 0;
+  padding: 1rem 10px;
   position: relative;
   margin: 0.25rem auto;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid var(--pinkColor);
 }
