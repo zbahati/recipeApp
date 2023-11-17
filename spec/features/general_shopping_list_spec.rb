@@ -49,20 +49,16 @@ RSpec.feature 'Shopping Lists', type: :feature do
     user.recipes.create(attributes)
   end
 
-  def create_recipe_food(user, recipe, food, attributes = {})
+  def create_recipe_food(_user, recipe, food, attributes = {})
     # Create RecipeFood if the Recipe is saved successfully
-    if recipe.save
-      recipe_food = recipe.recipe_foods.new(food: food, quantity: attributes[:quantity])
+    return unless recipe.save
 
-      # Save the RecipeFood if it's valid
-      if recipe_food.valid?
-        recipe_food.save
-        recipe_food
-      else
-        nil
-      end
-    else
-      nil
-    end
+    recipe_food = recipe.recipe_foods.new(food:, quantity: attributes[:quantity])
+
+    # Save the RecipeFood if it's valid
+    return unless recipe_food.valid?
+
+    recipe_food.save
+    recipe_food
   end
 end
