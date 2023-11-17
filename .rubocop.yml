@@ -30,6 +30,7 @@ Metrics/BlockLength:
   Exclude:
   - "spec/features/foods_spec.rb"
   - "spec/features/general_shopping_list_spec.rb"
+  - "spec/features/recipes_spec.rb"
 
 Style/Documentation:
   Enabled: false
