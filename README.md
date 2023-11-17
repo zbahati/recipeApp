@@ -12,6 +12,8 @@
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
+  - [Run tests](#testing)
+- [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
@@ -85,15 +87,13 @@ The Recipe app keeps track of all your recipes, ingredients, and inventory. It w
 
 ## Testing <a name="testing">
 
-1. To run the test for this project:
+1. To run the tests for this project:
 
-   ```bash
-   rspec ./spec/folder_name/file_name.rb
-
-
-   folder_name: this is the directory that consist of the file you need to test
-   file_name.rb: this should be the file you need to test
-   ```
+  ```bash
+  rspec 
+  or 
+  bundle exec rspec
+  ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
