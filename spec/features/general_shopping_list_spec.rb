@@ -23,15 +23,6 @@ RSpec.feature 'Shopping Lists', type: :feature do
     expect(page).to have_content('Shopping List')
     expect(page).to have_content('Amount of food items to buy:')
     expect(page).to have_content('Total value of food needed:')
-
-    # Add more expectations based on the content of your table
-    # expect(page).to have_content('Food 1')
-    # expect(page).to have_content('Food 2')
-
-    # Ensure the total quantity and total price calculations are correct
-    # expect(page).to have_content('Quantity', text: '8') # Adjust based on your data
-    # expect(page).to have_content('Price per unit', text: '1.99') # Adjust based on your data
-    # expect(page).to have_content('Total Price', text: '15.92') # Adjust based on your data
   end
 
   # Helper methods for creating objects in the database
